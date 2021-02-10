@@ -1,0 +1,55 @@
+<section class="card-info">
+
+        <div class="info create">
+            <div>URL do avatar</div>
+            <input 
+                type="url" 
+                name="avatar_url"
+                placeholder=" http://"
+                value="{{teacher.avatar_url}}"
+            >
+        </div>
+
+        <div class="info create">
+            <div>Nome Completo</div>
+            <input 
+                type="text" 
+                name="name"
+                value="{{teacher.name}}"
+            >
+        </div>
+
+        <div class="info create">
+            <div>Data de nascimento</div>
+            <input 
+                type="date" 
+                name="birth"
+                value="{{teacher.birth}}"
+            >
+        </div>
+
+        <div class="info create">
+            <div>Grau de escolaridade</div>
+
+            <select name="education_level">
+                <option value="1" {% if teacher.education_level == "Ensino Médio Completo" %}{% endif %}>Ensino Médio Completo</option>
+                <option value="2" {% if teacher.education_level == "Ensino Superior Completo" %}selected{% endif %}>Ensino Superior Completo</option>
+                <option value="3" {% if teacher.education_level == "Mestrado" %}selected{% endif %}>Mestrado</option>
+                <option value="4" {% if teacher.education_level == "Doutorado" %}selected{% endif %}>Doutorado</option>
+            </select>
+        </div>
+
+        <div class="info create">
+            <div>Tipo de aula</div>
+            <span><input type="radio" name="class_type" value="1" {% if teacher.class_type == "1" %}checked{% endif %}>Presencial</span>
+            <span><input type="radio" name="class_type" value="2" {% if teacher.class_type == "2" %}checked{% endif %}>À Distância</span>
+        </div>
+
+        <div class="info create">
+            <div>Área de Atuação</div>
+            <input type="text" name="acting_area" placeholder=" Separe todas as áreas com vírgula" value="{{teacher.acting_area}}">
+        </div>
+
+        </section>
+
+        <button type="submit">Salvar</button>

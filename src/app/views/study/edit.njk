@@ -1,0 +1,16 @@
+{% extends "layouts.njk" %}
+
+{% block content %}
+
+<form class="card-create" method="POST" action="/students?_method=PUT">
+    <section class="card-content edit">
+        <h3>Editar dados</h3>
+        <p>Confira suas informações atuais e mude as desejadas:</p>
+        {% include "study/fields.njk" %}
+
+        <input type="hidden" name="id" value="{{student.id}}">
+
+    </section>
+</form>
+
+{% endblock content %}

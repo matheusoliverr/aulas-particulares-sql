@@ -1,0 +1,48 @@
+{% extends "layouts.njk" %}
+
+{% block content %}
+
+<section class="card table">
+
+        
+    <div class="table header">
+        <a class="teachers-create" href="/teachers/create">Fazer cadastro</a>
+        <form action="/teachers" method="GET" name="filter">
+            <input type="text" name="filter" value="{{filter}}" placeholder="Nome ou Acompanhamento">
+            <button type="submit">Filtrar</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome Completo</th>
+                <th>Acompanhamento</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for teacher in teachers %}
+            <tr>
+                <td>
+                    <span style="background-image: url({{teacher.avatar_url}})"></span>
+                    {{teacher.name}}
+                </td>
+                <td class="areas">
+                        <span>{{teacher.acting_area}}</span>
+                </td>
+                
+                <td><a href="/teachers/{{teacher.id}}">Ver mais</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    <div class="paginate"
+        data-page="{{pagination.page}}"
+        data-total="{{pagination.total}}"
+        data-filter="{{filter}}"
+    ></div>
+</section>
+{% endblock content %}

@@ -1,0 +1,69 @@
+{% extends "layouts.njk" %}
+
+{% block content %}
+
+<section class="card">
+    <div class="card-image user" style="background: url({{teacher.avatar_url}}) no-repeat center center /cover">
+        
+    </div>
+
+    <div class="card-content">
+        <h3>Detalhes</h3>
+        
+        <section class="card-info">
+        <div class="info">
+            <div>Nome Completo</div>
+            <div>{{teacher.name}}</div>
+        </div>
+
+        <div class="info">
+            <div>Idade</div>
+            <div>{{teacher.age}}</div>
+        </div>
+
+        <div class="info">
+            <div>Grau de escolaridade</div>
+            <div class="info-span">
+            <span>{{teacher.education_level}}</span>
+            </div>
+        </div>
+
+        <div class="info">
+            <div>Tipo de aula</div>
+            <div class="info-span">
+                {% if teacher.class_type == "1"%}<span>Presencial</span>{% endif %} 
+                {% if teacher.class_type == "2"%}<span>À Distância</span>{% endif %}
+            </div>
+        </div>
+
+        <div class="info">
+            <div>Acompanhamento</div>
+            <div class="info-span">
+            <span>{{teacher.acting_area}}</span>
+            </div>
+        </div>
+
+        <div class="info">
+            <div>Desde</div>
+            <div class="info-span">
+                <span>{{teacher.creation_date[2]}}</span> /
+                <span>{{teacher.creation_date[1]}}</span> /
+                <span>{{teacher.creation_date[0]}}</span>
+            </div>
+        </div>
+
+        </section>
+
+        <form class="delete-form" action="/teachers?_method=DELETE" method="POST">
+            <input type="hidden" name="id" value="{{teacher.id}}">
+            <button type="submit">Deletar</button>
+        </form>
+
+        <a class="edit-button" href="/teachers/{{teacher.id}}/edit">Editar Dados</a>
+
+    </div>
+</section>
+
+{% include "confirm.njk" %}
+
+{% endblock content %}

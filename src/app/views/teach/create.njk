@@ -1,0 +1,13 @@
+{% extends "layouts.njk" %}
+
+{% block content %}
+
+<form class="card-create" method="POST" action="/teachers">
+    <section class="card-content">
+        <h3>Cadastro de professor</h3>
+        <p>Digite suas informações nos campos abaixo:</p>
+        {% include "teach/fields.njk" %}
+
+    </section>
+</form>
+{% endblock content %}
